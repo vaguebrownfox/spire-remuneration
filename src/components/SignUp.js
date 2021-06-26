@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
 	submit: {
 		marginTop: theme.spacing(4),
 		marginBottom: theme.spacing(2),
+		minWidth: theme.spacing(32),
+		margin: "auto",
 	},
 	getinvite: {
 		marginTop: theme.spacing(2),
@@ -164,9 +166,8 @@ const SignUpComponent = ({ userid, username }) => {
 
 				<Button
 					type="submit"
-					fullWidth
 					variant="contained"
-					color="primary"
+					color="secondary"
 					className={classes.submit}
 					onClick={submitHelper}
 					disabled={registered || linkSent}

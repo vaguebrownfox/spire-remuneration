@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { setRegister } from "../firebase/firestore";
 import { authObj } from "../firebase/auth";
+import { Typography } from "@material-ui/core";
 
 const ShortForm = ({ userid, username, user }) => {
 	const classes = useStyles();
@@ -19,6 +20,7 @@ const ShortForm = ({ userid, username, user }) => {
 		email: user.email,
 	});
 	const [error, setError] = React.useState({ field: "", isErr: false });
+	const [registered, setRegistered] = React.useState(false);
 
 	// inputs handles
 	const fields = ["fullname", "mobile", "paymentMode", "paymentInfo"];
@@ -69,8 +71,9 @@ const ShortForm = ({ userid, username, user }) => {
 		console.log(form, user);
 		if (onNextHelper()) {
 			await setRegister(form);
-			await authObj.signOut();
-			window.location.href = "/";
+			setRegistered(true);
+			// await authObj.signOut();
+			// window.location.href = "/";
 		}
 	};
 
@@ -93,10 +96,19 @@ const ShortForm = ({ userid, username, user }) => {
 							placeholder="Your User ID"
 							variant="standard"
 							color="secondary"
-							value={username}
+							value={form.username}
 							disabled
 						/>
-
+						<TextField
+							id="email"
+							fullWidth
+							label="Email ID"
+							placeholder="Your Email ID"
+							variant="standard"
+							color="secondary"
+							value={form.email}
+							disabled
+						/>
 						<TextField
 							id="fullname"
 							fullWidth
@@ -106,8 +118,8 @@ const ShortForm = ({ userid, username, user }) => {
 							color="secondary"
 							value={form.fullname || ""}
 							onChange={(e) => handleInputs(fields[0], e)} // ! name : 0
+							disabled={registered}
 						/>
-
 						<TextField
 							id="mobile_no"
 							fullWidth
@@ -118,8 +130,8 @@ const ShortForm = ({ userid, username, user }) => {
 							value={form.mobile || ""}
 							error={form.mobile?.length < 10 || !form.mobile}
 							onChange={(e) => handleInputs(fields[1], e)} // ! mobile num : 1
+							disabled={registered}
 						/>
-
 						<TextField
 							id="payment-mode"
 							select
@@ -130,6 +142,7 @@ const ShortForm = ({ userid, username, user }) => {
 							onChange={(e) => handleInputs(fields[2], e)} // ! payment mode : 2
 							variant="outlined"
 							helperText="Select your prefered payment mode"
+							disabled={registered}
 						>
 							{paymentModes.map((mode) => (
 								<MenuItem key={mode.value} value={mode.value}>
@@ -137,7 +150,6 @@ const ShortForm = ({ userid, username, user }) => {
 								</MenuItem>
 							))}
 						</TextField>
-
 						<TextField
 							id="payment-id"
 							fullWidth
@@ -147,6 +159,7 @@ const ShortForm = ({ userid, username, user }) => {
 							color="secondary"
 							value={form.paymentInfo || ""}
 							onChange={(e) => handleInputs(fields[3], e)} // ! payment mode : 3
+							disabled={registered}
 						/>
 					</form>
 				</CardContent>
@@ -167,9 +180,22 @@ const ShortForm = ({ userid, username, user }) => {
 					color="secondary"
 					onClick={handleNext}
 					className={classes.button}
+					disabled={registered}
 				>
 					Submit
 				</Button>
+				{registered && (
+					<>
+						<Typography variant="body" gutterBottom align="center">
+							You've been registered for receiving remuneration!
+						</Typography>
+						<br />
+						<Typography variant="body2" gutterBottom align="center">
+							Please wait while we verify your data (may take 2 or
+							3 days)!
+						</Typography>
+					</>
+				)}
 			</Card>
 		</>
 	);

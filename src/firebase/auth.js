@@ -49,6 +49,7 @@ export const signInWithEmailLink = async () => {
 
 		try {
 			await auth().signInWithEmailLink(email, url);
+
 			window.localStorage.removeItem("emailForSignIn");
 
 			let parsee = window.location.search;

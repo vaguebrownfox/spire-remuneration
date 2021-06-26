@@ -59,7 +59,7 @@ function AsqAppBar({ title }) {
 						className={classes.menuButton}
 						color="primary"
 						aria-label="open drawer"
-						href="/?userid=jeev-2347abc"
+						href="/"
 					>
 						<HomeIcon />
 					</IconButton>

@@ -1,0 +1,13 @@
+{
+	"hosting": {
+		"public": "build",
+		"site": "spire-remuneration",
+		"rewrites": [
+			{
+				"source": "**",
+				"destination": "/index.html"
+			}
+		],
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+	}
+}

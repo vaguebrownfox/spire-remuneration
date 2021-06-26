@@ -19,24 +19,23 @@ const App = () => {
 	const [userName, setUsername] = React.useState(null);
 
 	React.useEffect(() => {
-		let parsee = window.location.search;
-		const val = new URLSearchParams(parsee).get("userid");
-		if (val) {
-			window.localStorage.setItem("userid", val);
-			window.location.href = "/";
-		} else {
-			let userid = window.localStorage.getItem("userid");
-			if (userid) {
-				let username = userid.split("-")[0];
-				setUserID(userid);
-				setUsername(username);
+		authObj.signOut();
+		signInWithEmailLink().then(() => {
+			let parsee = window.location.search;
+			const val = new URLSearchParams(parsee).get("userid");
+			if (val) {
+				window.localStorage.setItem("userid", val);
+				window.location.href = "/";
+			} else {
+				let userid = window.localStorage.getItem("userid");
+				if (userid) {
+					let username = userid.split("_")[0];
+					setUserID(userid);
+					setUsername(username);
+				}
+				// window.localStorage.removeItem("userid");
 			}
-			// window.localStorage.removeItem("userid");
-		}
-	}, []);
-
-	React.useEffect(() => {
-		signInWithEmailLink();
+		});
 	}, []);
 
 	const bull = <span className={classes.bullet}>•</span>;
@@ -103,6 +102,8 @@ const useStyles = makeStyles((theme) => ({
 		borderRightWidth: 2,
 		borderColor: theme.palette.secondary.main,
 		borderTopColor: "#fff",
+
+		overflow: "auto",
 	},
 	sign: {
 		flex: 4,

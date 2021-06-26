@@ -9,7 +9,7 @@ const Title = ({ userid, username }) => {
 			{userid ? (
 				<>
 					<Typography
-						variant="h4"
+						variant="h5"
 						component="div"
 						align="center"
 						gutterBottom
