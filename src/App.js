@@ -18,8 +18,8 @@ const App = () => {
 	const [userID, setUserID] = React.useState(null);
 	const [userName, setUsername] = React.useState(null);
 
-	React.useEffect(() => {
-		authObj.signOut();
+	React.useLayoutEffect(() => {
+		// authObj.signOut();
 		signInWithEmailLink().then(() => {
 			let parsee = window.location.search;
 			const val = new URLSearchParams(parsee).get("userid");
