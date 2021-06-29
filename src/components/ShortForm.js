@@ -206,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		justifyContent: "center",
+		justifyContent: "flex-start",
 		flex: "1",
 		background: theme.palette.primary.card,
 		paddingTop: theme.spacing(2),
