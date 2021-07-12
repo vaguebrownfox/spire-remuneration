@@ -22,9 +22,11 @@ const App = () => {
 		// authObj.signOut();
 		signInWithEmailLink().then(() => {
 			let parsee = window.location.search;
-			const val = new URLSearchParams(parsee).get("userid");
-			if (val) {
-				window.localStorage.setItem("userid", val);
+			const uid = new URLSearchParams(parsee).get("userid");
+			const email = new URLSearchParams(parsee).get("email");
+			if (uid && email) {
+				window.localStorage.setItem("userid", uid);
+				window.localStorage.setItem("emailForSignIn", email);
 				window.location.href = "/";
 			} else {
 				let userid = window.localStorage.getItem("userid");
