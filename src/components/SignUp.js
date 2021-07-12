@@ -76,7 +76,7 @@ const SignUp = ({ userid, username }) => {
 
 	return (
 		<div>
-			{true ? (
+			{recaptcha ? (
 				<SignUpComponent userid={userid} username={username} />
 			) : (
 				<>
