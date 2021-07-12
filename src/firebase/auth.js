@@ -8,7 +8,7 @@ export { authObj };
 
 export const signInWithEmailID = async (email, userID) => {
 	const actionCodeSettings = {
-		url: `${window.location.href}?userid=${userID}`,
+		url: `${window.location.href}?userid=${userID}&email=${email}`,
 		handleCodeInApp: true,
 	};
 	console.log();
