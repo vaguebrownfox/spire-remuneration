@@ -24,7 +24,7 @@ const App = () => {
 			let parsee = window.location.search;
 			const uid = new URLSearchParams(parsee).get("userid");
 			const email = new URLSearchParams(parsee).get("email");
-			if (uid && email) {
+			if (uid) {
 				window.localStorage.setItem("userid", uid);
 				window.localStorage.setItem("emailForSignIn", email);
 				window.location.href = "/";
