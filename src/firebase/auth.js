@@ -40,7 +40,9 @@ export const signInWithEmailLink = async () => {
 	const url = window.location.href;
 	const isEmailLink = verifyAuthUrl(url);
 	if (isEmailLink) {
-		let email = window.localStorage.getItem("emailForSignIn");
+		let parsee = window.location.search;
+		let email = new URLSearchParams(parsee).get("email");
+		// let email = window.localStorage.getItem("emailForSignIn");
 		if (!email) {
 			email = window.prompt(
 				"Seems like you are signing in from a different device or browser window; Please provide your email for confirmation"
