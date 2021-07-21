@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import AsqAppBar from "./components/AsqAppBar";
 import ShortForm from "./components/ShortForm";
-
-import { Provider as FormProvider } from "./context/data/FormContext";
 import { grey } from "@material-ui/core/colors";
 import SignUp from "./components/SignUp";
 import Title from "./components/Title";
@@ -19,7 +17,6 @@ const App = () => {
 	const [userName, setUsername] = React.useState(null);
 
 	React.useLayoutEffect(() => {
-		// authObj.signOut();
 		signInWithEmailLink().then(() => {
 			let parsee = window.location.search;
 			const uid = new URLSearchParams(parsee).get("userid");
@@ -50,38 +47,33 @@ const App = () => {
 				style={{ padding: 0 }}
 				maxWidth="md"
 			>
-				<FormProvider>
-					<AsqAppBar title="SPIRE Lab | Volunteer compensation" />
+				<AsqAppBar title="SPIRE Lab | Volunteer compensation" />
 
-					{userID ? (
-						user ? (
-							<ShortForm
-								userid={userID}
-								username={userName}
-								user={user}
-							/>
-						) : (
-							<>
-								<Title userid={userID} username={userName} />
-								<div className={classes.sign}>
-									<SignUp
-										userid={userID}
-										username={userName}
-									/>
-								</div>
-							</>
-						)
+				{userID ? (
+					user ? (
+						<ShortForm
+							userid={userID}
+							username={userName}
+							user={user}
+						/>
 					) : (
 						<>
 							<Title userid={userID} username={userName} />
 							<div className={classes.sign}>
-								{bull}
-								{bull}
-								{bull}
+								<SignUp userid={userID} username={userName} />
 							</div>
 						</>
-					)}
-				</FormProvider>
+					)
+				) : (
+					<>
+						<Title userid={userID} username={userName} />
+						<div className={classes.sign}>
+							{bull}
+							{bull}
+							{bull}
+						</div>
+					</>
+				)}
 			</Container>
 		</>
 	);
