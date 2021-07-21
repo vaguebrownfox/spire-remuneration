@@ -8,7 +8,6 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { setRegister } from "../firebase/firestore";
-import { authObj } from "../firebase/auth";
 import { Typography } from "@material-ui/core";
 
 const ShortForm = ({ userid, username, user }) => {
