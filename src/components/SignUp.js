@@ -60,9 +60,17 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: theme.spacing(2),
 		marginBottom: theme.spacing(1),
 	},
+	progress: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "center",
+	},
 }));
 
 const SignUp = ({ userid, username }) => {
+	const classes = useStyles();
+
 	const [recaptcha, setRecaptcha] = useState();
 	const element = useRef(null);
 
@@ -79,14 +87,14 @@ const SignUp = ({ userid, username }) => {
 			{recaptcha ? (
 				<SignUpComponent userid={userid} username={username} />
 			) : (
-				<>
-					<div>
+				<div className={classes.progress}>
+					<div className={classes.progress}>
 						<CircularProgress color="secondary" size={28} />
 					</div>
 					<Typography variant="caption">
 						Setting up authentication, please wait...
 					</Typography>
-				</>
+				</div>
 			)}
 			<div ref={element}></div>
 		</div>
@@ -99,6 +107,7 @@ const SignUpComponent = ({ userid, username }) => {
 	const [email, setEmail] = useState("");
 	const [registered, setRegistered] = useState(false);
 	const [linkSent, setLinkSent] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		if (emailRx().test(email)) {
@@ -113,10 +122,18 @@ const SignUpComponent = ({ userid, username }) => {
 	}, [email]);
 
 	const submitHelper = () => {
+		setLoading(true);
 		if (emailRx().test(email)) {
-			signInWithEmailID(email, userid).then((res) => {
-				setLinkSent(res);
-			});
+			signInWithEmailID(email, userid)
+				.then((res) => {
+					setLinkSent(res);
+					setLoading(false);
+				})
+				.catch((e) => {
+					setLoading(false);
+				});
+		} else {
+			setLoading(false);
 		}
 	};
 
@@ -170,10 +187,15 @@ const SignUpComponent = ({ userid, username }) => {
 					color="secondary"
 					className={classes.submit}
 					onClick={submitHelper}
-					disabled={registered || linkSent}
+					disabled={registered || linkSent || loading}
 				>
 					{!linkSent ? "Register" : "Check your inbox!"}
 				</Button>
+				{loading && (
+					<div className={classes.progress}>
+						<CircularProgress color="secondary" size={28} />
+					</div>
+				)}
 				{linkSent && (
 					<>
 						<Typography
