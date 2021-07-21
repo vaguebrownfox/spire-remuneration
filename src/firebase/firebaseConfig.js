@@ -14,12 +14,9 @@ exports.PROJECT_ID = "asquire-mox";
 
 // Firestore
 exports.DATABASE_URL = "https://asquire-mox.firebaseio.com";
-exports.ACTIVE_DOCS = "active";
 exports.USERS_COLLECTION = "users_final";
 exports.CONTENT_COLLECTION = "content";
-exports.STIM_DOC = "stimulus";
-exports.SURVEY_DOC = "survey";
-exports.REGISTER = "register";
+exports.REGISTER = "register_fin";
 
 // Storage
 exports.STORAGE_BUCKET = "asquire-mox.appspot.com";
