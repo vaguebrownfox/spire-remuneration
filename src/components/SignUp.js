@@ -89,7 +89,11 @@ const SignUp = ({ userid, username }) => {
 			) : (
 				<div className={classes.progress}>
 					<div className={classes.progress}>
-						<CircularProgress color="secondary" size={28} />
+						<CircularProgress
+							style={{ margin: 32 }}
+							color="secondary"
+							size={28}
+						/>
 					</div>
 					<Typography variant="caption">
 						Setting up authentication, please wait...
