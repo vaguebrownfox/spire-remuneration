@@ -9,7 +9,7 @@ import Avatar from "@material-ui/core/Avatar";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import { Tooltip } from "@material-ui/core";
 
-import { spire_logo_url, iisc_logo_url } from "../firebase/firebaseConfig";
+// import { spire_logo_url, iisc_logo_url } from "../firebase/firebaseConfig";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -79,7 +79,7 @@ function AsqAppBar({ title }) {
 								<Avatar
 									alt="Spire lab logo"
 									variant="circular"
-									src={spire_logo_url}
+									src="/spire_logo_sq.png"
 									className={classes.avatar}
 								/>
 							</Tooltip>
@@ -94,7 +94,7 @@ function AsqAppBar({ title }) {
 								<Avatar
 									alt="IISc logo"
 									variant="circular"
-									src={iisc_logo_url}
+									src="iisc_logo_sq.png"
 									className={classes.avatar}
 								/>
 							</Tooltip>
