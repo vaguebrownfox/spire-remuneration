@@ -1,12 +1,12 @@
 import { db } from "./firebase";
+import { REMUN_COLLECTION } from "./firebaseSetup";
 
-const { REGISTER } = require("./firebaseConfig");
-
-export const getRegisterRef = (email) => db.collection(REGISTER).doc(email);
+export const getRegisterRef = (email) =>
+	db.collection(REMUN_COLLECTION).doc(email);
 
 export const setRegister = async (form) => {
 	let res = false;
-	const inviteRef = db.collection(REGISTER).doc(form.email);
+	const inviteRef = db.collection(REMUN_COLLECTION).doc(form.email);
 	await inviteRef
 		.set({
 			...form,
