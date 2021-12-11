@@ -8,6 +8,7 @@ import HomeIcon from "@material-ui/icons/HomeRounded";
 import Avatar from "@material-ui/core/Avatar";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import { Tooltip } from "@material-ui/core";
+import { VERSION } from "../firebase/firebaseSetup";
 
 // import { spire_logo_url, iisc_logo_url } from "../firebase/firebaseConfig";
 
@@ -100,6 +101,16 @@ function AsqAppBar({ title }) {
 							</Tooltip>
 						</a>
 					</AvatarGroup>
+					<Typography
+						variant="caption"
+						style={{
+							position: "absolute",
+							bottom: 0,
+							right: 0,
+							fontSize: "8px",
+							color: "white",
+						}}
+					>{`ver:${VERSION}`}</Typography>
 				</Toolbar>
 			</AppBar>
 		</>
