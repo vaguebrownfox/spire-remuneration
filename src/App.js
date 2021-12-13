@@ -47,7 +47,7 @@ const App = () => {
 				style={{ padding: 0 }}
 				maxWidth="md"
 			>
-				<AsqAppBar title="SPIRE Lab | Volunteer compensation" />
+				<AsqAppBar title="SPIRE Lab | Compensation" />
 
 				{userID ? (
 					user ? (

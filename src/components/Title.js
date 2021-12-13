@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, CircularProgress, Typography } from "@material-ui/core";
 
-const WEBAPP_LINK = "asquire.web.app";
+const WEBAPP_LINK = "https://asquire.web.app";
 
 const Title = ({ userid, username }) => {
 	const classes = useStyles();
@@ -86,6 +86,7 @@ const Title = ({ userid, username }) => {
 								className={classes.btn}
 								variant="outlined"
 								color="secondary"
+								ref="noreferrer"
 								href={WEBAPP_LINK}
 							>
 								Go to Web App
