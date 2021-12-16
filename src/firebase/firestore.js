@@ -6,8 +6,12 @@ export const getRegisterRef = (email) =>
 
 export const setRegister = async (form) => {
 	let res = false;
-	const inviteRef = db.collection(REMUN_COLLECTION).doc(form.email);
-	await inviteRef
+	const remunRef = db
+		.collection(REMUN_COLLECTION)
+		.doc(form.email)
+		.collection("registered-users")
+		.doc(form.userid);
+	await remunRef
 		.set({
 			...form,
 			paid: false,
