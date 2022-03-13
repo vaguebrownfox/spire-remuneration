@@ -5,18 +5,24 @@ export const getRegisterRef = (email) =>
 	db.collection(REMUN_COLLECTION).doc(email);
 
 export const setRegister = async (form) => {
-	let res = false;
-
 	const remunEmailRef = db.collection(REMUN_COLLECTION).doc(form.email);
 
-	await remunEmailRef
-		.set({ [form.userid]: JSON.stringify(form) })
+	let data = await remunEmailRef.get();
+
+	let method = "set";
+	if (data.exists()) {
+		method = "update";
+	}
+
+	let res = await remunEmailRef[method]({
+		[form.userid]: JSON.stringify(form),
+	})
 		.then(() => {
-			res = true;
+			return true;
 		})
 		.catch((e) => {
 			console.log("firestore ::set register error", e);
-			res = false;
+			return false;
 		});
 
 	// const remunRef = db
