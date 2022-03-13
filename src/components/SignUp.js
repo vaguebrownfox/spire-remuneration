@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const SignUp = ({ userid, username }) => {
+const SignUp = ({ userid, username, volunteerId }) => {
 	const classes = useStyles();
 
 	const [recaptcha, setRecaptcha] = useState();
@@ -85,7 +85,11 @@ const SignUp = ({ userid, username }) => {
 	return (
 		<div>
 			{recaptcha ? (
-				<SignUpComponent userid={userid} username={username} />
+				<SignUpComponent
+					userid={userid}
+					username={username}
+					volunteerId={volunteerId}
+				/>
 			) : (
 				<div className={classes.progress}>
 					<div className={classes.progress}>
@@ -105,7 +109,7 @@ const SignUp = ({ userid, username }) => {
 	);
 };
 
-const SignUpComponent = ({ userid, username }) => {
+const SignUpComponent = ({ userid, username, volunteerId }) => {
 	const classes = useStyles();
 
 	const [email, setEmail] = useState("");
@@ -128,7 +132,7 @@ const SignUpComponent = ({ userid, username }) => {
 	const submitHelper = () => {
 		setLoading(true);
 		if (emailRx().test(email)) {
-			signInWithEmailID(email, userid)
+			signInWithEmailID(email, userid, volunteerId)
 				.then((res) => {
 					setLinkSent(res);
 					setLoading(false);

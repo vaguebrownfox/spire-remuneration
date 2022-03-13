@@ -6,9 +6,9 @@ authObj.setPersistence(auth.Auth.Persistence.SESSION);
 
 export { authObj };
 
-export const signInWithEmailID = async (email, userID) => {
+export const signInWithEmailID = async (email, userID, volunteerId) => {
 	const actionCodeSettings = {
-		url: `${window.location.href}?userid=${userID}&email=${email}`,
+		url: `${window.location.href}?userid=${userID}&email=${email}&volunteerId=${volunteerId}`,
 		handleCodeInApp: true,
 	};
 	console.log();
