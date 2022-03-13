@@ -10,11 +10,12 @@ import TextField from "@material-ui/core/TextField";
 import { setRegister } from "../firebase/firestore";
 import { Typography } from "@material-ui/core";
 
-const ShortForm = ({ userid, username, user }) => {
+const ShortForm = ({ userid, username, user, volunteerId }) => {
 	const classes = useStyles();
 
 	const [form, setForm] = React.useState({
 		userid,
+		volunteerId,
 		username,
 		email: user.email,
 	});
