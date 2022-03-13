@@ -14,22 +14,27 @@ const App = () => {
 	const classes = useStyles();
 	const [user] = useAuthState(authObj);
 	const [userID, setUserID] = React.useState(null);
+	const [volunteerID, setVolunteerID] = React.useState(null);
 	const [userName, setUsername] = React.useState(null);
 
 	React.useLayoutEffect(() => {
 		signInWithEmailLink().then(() => {
 			let parsee = window.location.search;
 			const uid = new URLSearchParams(parsee).get("userid");
+			const vid = new URLSearchParams(parsee).get("volunteerId");
 			const email = new URLSearchParams(parsee).get("email");
 			if (uid) {
 				window.localStorage.setItem("userid", uid);
+				window.localStorage.setItem("volunteerId", vid);
 				window.localStorage.setItem("emailForSignIn", email);
 				window.location.href = "/";
 			} else {
 				let userid = window.localStorage.getItem("userid");
+				let volunteerId = window.localStorage.getItem("volunteerId");
 				if (userid) {
 					let username = userid.split("_")[0];
 					setUserID(userid);
+					setVolunteerID(volunteerId);
 					setUsername(username);
 				}
 				// window.localStorage.removeItem("userid");
@@ -53,20 +58,33 @@ const App = () => {
 					user ? (
 						<ShortForm
 							userid={userID}
+							volunteerId={volunteerID}
 							username={userName}
 							user={user}
 						/>
 					) : (
 						<>
-							<Title userid={userID} username={userName} />
+							<Title
+								userid={userID}
+								volunteerId={volunteerID}
+								username={userName}
+							/>
 							<div className={classes.sign}>
-								<SignUp userid={userID} username={userName} />
+								<SignUp
+									userid={userID}
+									volunteerId={volunteerID}
+									username={userName}
+								/>
 							</div>
 						</>
 					)
 				) : (
 					<>
-						<Title userid={userID} username={userName} />
+						<Title
+							userid={userID}
+							volunteerId={volunteerID}
+							username={userName}
+						/>
 						<div className={classes.sign}>
 							{bull}
 							{bull}
