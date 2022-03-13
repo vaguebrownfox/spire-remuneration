@@ -10,7 +10,7 @@ export const setRegister = async (form) => {
 	let data = await remunEmailRef.get();
 
 	let method = "set";
-	if (data.exists()) {
+	if (data.exists) {
 		method = "update";
 	}
 
