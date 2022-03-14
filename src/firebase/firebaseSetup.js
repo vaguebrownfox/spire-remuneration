@@ -2,7 +2,7 @@
 exports.PROJECT_ID = "asquire-mox";
 
 // Version code
-exports.VERSION = "lap-test";
+exports.VERSION = "yin";
 exports.WEEK = 1;
 
 // Firestore

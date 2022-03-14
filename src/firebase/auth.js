@@ -11,7 +11,6 @@ export const signInWithEmailID = async (email, userID, volunteerId) => {
 		url: `${window.location.href}?userid=${userID}&email=${email}&volunteerId=${volunteerId}`,
 		handleCodeInApp: true,
 	};
-	console.log();
 	const res = await auth()
 		.sendSignInLinkToEmail(email, actionCodeSettings)
 		.then(() => {
@@ -56,7 +55,6 @@ export const signInWithEmailLink = async () => {
 
 			let parsee = window.location.search;
 			const val = new URLSearchParams(parsee).get("continueUrl");
-			console.log(val);
 
 			window.location.href = val;
 		} catch (e) {

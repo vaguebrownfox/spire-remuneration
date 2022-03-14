@@ -24,24 +24,5 @@ export const setRegister = async (form) => {
 			console.log("firestore ::set register error", e);
 			return false;
 		});
-
-	// const remunRef = db
-	// 	.collection(REMUN_COLLECTION)
-	// 	.doc(form.email)
-	// 	.collection("registered-users")
-	// 	.doc(form.userid);
-	// await remunRef
-	// 	.set({
-	// 		...form,
-	// 		paid: false,
-	// 		verified: false,
-	// 	})
-	// 	.then(() => {
-	// 		res = true;
-	// 	})
-	// 	.catch((e) => {
-	// 		console.log("firestore ::set register error", e);
-	// 		res = false;
-	// 	});
 	return res;
 };

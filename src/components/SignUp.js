@@ -121,7 +121,6 @@ const SignUpComponent = ({ userid, username, volunteerId }) => {
 		if (emailRx().test(email)) {
 			const registerRef = getRegisterRef(email);
 			registerRef.get().then(({ exists }) => {
-				console.log("exists: ", exists);
 				setRegistered(exists);
 			});
 		} else {
