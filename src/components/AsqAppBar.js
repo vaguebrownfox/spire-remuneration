@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import HomeIcon from "@material-ui/icons/HomeRounded";
 import Avatar from "@material-ui/core/Avatar";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
-import { Tooltip } from "@material-ui/core";
+import { Button, Card, Paper, Tooltip } from "@material-ui/core";
 import { VERSION } from "../firebase/firebaseSetup";
 
 // import { spire_logo_url, iisc_logo_url } from "../firebase/firebaseConfig";
@@ -46,6 +46,21 @@ const useStyles = makeStyles((theme) => ({
 		textDecoration: "none" /* no underline */,
 		borderRadius: "50%",
 		borderColor: theme.palette.secondary.dark,
+	},
+	warning: {
+		color: "red",
+		padding: theme.spacing(1),
+	},
+	note: {
+		display: "flex",
+		flexWrap: "wrap",
+		justifyContent: "center",
+		alignContent: "center",
+	},
+	contact: {
+		textTransform: "none",
+		padding: 0,
+		color: "blue",
 	},
 }));
 
@@ -113,6 +128,23 @@ function AsqAppBar({ title }) {
 					>{`ver:${VERSION}`}</Typography>
 				</Toolbar>
 			</AppBar>
+			<Paper className={classes.note}>
+				<Typography
+					variant="subtitle1"
+					className={classes.warning}
+				>{`Please contact us if you are having any issues with registrations`}</Typography>
+				<Button
+					className={classes.contact}
+					variant="text"
+					size="medium"
+					color="secondary"
+					target="_blank"
+					rel="noreferrer"
+					href={`https://asquire.web.app/contact`}
+				>
+					Contact
+				</Button>
+			</Paper>
 		</>
 	);
 }

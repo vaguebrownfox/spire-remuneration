@@ -10,7 +10,9 @@ const Title = ({ userid, username }) => {
 	const [wait, setWait] = React.useState(true);
 
 	React.useEffect(() => {
-		setTimeout(() => setWait(false), 7000);
+		const reset = setTimeout(() => setWait(false), 7000);
+
+		return () => clearTimeout(reset);
 	}, []);
 
 	return (
@@ -86,7 +88,7 @@ const Title = ({ userid, username }) => {
 								className={classes.btn}
 								variant="outlined"
 								color="secondary"
-								ref="noreferrer"
+								rel="noreferrer"
 								href={WEBAPP_LINK}
 							>
 								Go to Web App
