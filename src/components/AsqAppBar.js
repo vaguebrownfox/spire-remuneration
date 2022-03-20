@@ -55,11 +55,12 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexWrap: "wrap",
 		justifyContent: "center",
-		alignContent: "center",
+		// alignContent: "center",
 	},
 	contact: {
 		textTransform: "none",
 		padding: 0,
+		margin: theme.spacing(1),
 		color: "blue",
 	},
 }));
@@ -132,7 +133,7 @@ function AsqAppBar({ title }) {
 				<Typography
 					variant="subtitle1"
 					className={classes.warning}
-				>{`Please contact us if you are having any issues with registrations`}</Typography>
+				>{`Please contact us if you are facing any issues during the registration process`}</Typography>
 				<Button
 					className={classes.contact}
 					variant="text"
