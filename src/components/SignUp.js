@@ -175,7 +175,9 @@ const SignUpComponent = ({ userid, username, volunteerId }) => {
 							label="Email ID"
 							placeholder="emailid@example.com"
 							name="emailId"
-							autoComplete="email"
+							// autoComplete="email"
+							autoComplete="off"
+							autoCorrect="off"
 							value={email}
 							error={registered && email.length > 0}
 							onChange={(e) => setEmail(e.target.value)}
